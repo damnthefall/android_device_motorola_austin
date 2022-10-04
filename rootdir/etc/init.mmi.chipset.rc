@@ -1,0 +1,24 @@
+import /vendor/etc/init/hw/init.mmi.backup.trustlet.rc
+import /vendor/etc/init/hw/init.mmi.sec.rc
+
+#insmod usbnet.ko when on factory mode
+on early-init && property:ro.boot.atm=enable && property:ro.bootmode=mot-factory
+    insmod /vendor/lib/modules/moto_f_usbnet.ko
+
+on boot
+    # change permission for vibrator
+    chmod 0660 /sys/class/leds/vibrator/activate
+    chmod 0660 /sys/class/leds/vibrator/duration
+    chmod 0660 /sys/class/leds/vibrator/state
+    chmod 0660 /sys/class/leds/vibrator/brightness
+    # Set adaptive charging perms for HAL
+    chown system system /sys/module/qpnp_adaptive_charge/parameters/upper_limit
+    chown system system /sys/module/qpnp_adaptive_charge/parameters/lower_limit
+
+on early-init
+    insmod /vendor/lib/modules/mmi_info.ko
+    insmod /vendor/lib/modules/qpnp_adaptive_charge.ko
+
+on early-boot && property:ro.vendor.build.motfactory=1
+    wait /sys/devices/platform/moto_chg_tcmd/force_chg_usb_suspend
+    chown system system /sys/devices/platform/moto_chg_tcmd/force_chg_usb_suspend

@@ -1,0 +1,3 @@
+on post-fs-data
+    chown root vendor_tcmd /dev/block/platform/bootdevice/by-name/cid
+    chmod 0660 /dev/block/platform/bootdevice/by-name/cid

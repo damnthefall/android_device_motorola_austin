@@ -1,0 +1,83 @@
+on early-init
+   insmod /vendor/lib/modules/sensors_class.ko
+   insmod /vendor/lib/modules/chipone_tddi_mmi.ko
+   insmod /vendor/lib/modules/mmi_sys_temp.ko
+   insmod /vendor/lib/modules/goodix_mmi.ko
+   insmod /vendor/lib/modules/aw883xx_dlkm.ko
+   insmod /vendor/lib/modules/sx937x_sar.ko
+   insmod /vendor/lib/modules/exfat.ko
+
+on property:ro.build.type=userdebug
+    insmod /vendor/lib/modules/watchdogtest.ko
+
+on post-fs-data
+    # calibration
+    mkdir /data/vendor/sensor 0774 system system
+    # Sensor
+    chmod 0660 /dev/hf_manager
+    chown system system /dev/hf_manager
+
+    # config fingerprint
+    mkdir /data/vendor/.fps 0770 system vendor_fingerp
+    mkdir /mnt/vendor/persist/fps 0770 system system
+
+    # moto proximity sensor cal
+    chmod 0660 /sys/bus/platform/drivers/mtk_nanohub/proxcal
+    chown system system /sys/bus/platform/drivers/mtk_nanohub/proxcal
+
+on late-init
+    #moto algo params
+    chmod 0660 /sys/bus/platform/drivers/mtk_nanohub/algo_params
+    chown system system /sys/bus/platform/drivers/mtk_nanohub/algo_params
+    chmod 0664 /sys/class/drm/card0-DSI-1/panelName
+    chown system system /sys/class/drm/card0-DSI-1/panelName
+
+service capsense_reset /vendor/bin/capsense_reset
+    class core
+    user system
+    group system input
+    disabled
+
+on property:sys.boot_completed=1
+  start capsense_reset
+
+on early-init && property:ro.boot.atm=enable && property:ro.bootmode=mot-factory
+   write /sys/class/leds/charging/brightness 3
+
+on early-boot
+    # Permission for Health Storage HAL
+    chown system system /sys/devices/platform/bootdevice/manual_gc
+    chown system system /sys/devices/platform/bootdevice/ufshid/trigger
+
+on boot
+   # change permission for capsensor
+   chown system system /sys/class/capsense/reset
+   chown radio system /sys/class/capsense/reg
+   chown radio system /sys/class/capsense/fw_download_status
+   chmod 0660 /sys/class/capsense/reset
+   chmod 0660 /sys/class/capsense/reg
+   chmod 0660 /sys/class/capsense/fw_download_status
+
+   chown system system /sys/class/sensors/Moto\ CapSense\ Ch0/enable
+   chown system system /sys/class/sensors/Moto\ CapSense\ Ch0/poll_delay
+   chown system system /sys/class/sensors/Moto\ CapSense\ Ch1/enable
+   chown system system /sys/class/sensors/Moto\ CapSense\ Ch1/poll_delay
+   chown system system /sys/class/sensors/Moto\ CapSense\ Ch2/enable
+   chown system system /sys/class/sensors/Moto\ CapSense\ Ch2/poll_delay
+   chown system system /sys/class/sensors/Moto\ CapSense\ Ch3/enable
+   chown system system /sys/class/sensors/Moto\ CapSense\ Ch3/poll_delay
+   chown system system /sys/class/sensors/Moto\ CapSense\ Ch4/enable
+   chown system system /sys/class/sensors/Moto\ CapSense\ Ch4/poll_delay
+   chown system system /sys/class/capsense/int_state
+
+   # aw883xx
+   chmod 0660 /dev/aw_smartpa
+   chown system shell /dev/aw_smartpa
+   chmod 0755 /system_ext/bin/stagefright
+
+# camera eeprom calibration
+on property:sys.boot_completed=1
+  chmod 0644 /data/vendor/camera_dump/mot_s5kjn1_eeprom_main.bin
+  chmod 0644 /data/vendor/camera_dump/mot_hi1336_eeprom_front.bin
+  chmod 0644 /data/vendor/camera_dump/mot_gc02m1_eeprom_macro.bin
+  chmod 0644 /data/vendor/camera_dump/mot_gc02m1b_eeprom_depth.bin

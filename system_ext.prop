@@ -1,0 +1,10 @@
+persist.sys.usb.config=none
+persist.vendor.camera.expose.aux=1
+persist.vendor.em.dy.debug=1
+ro.boot.wificountrycode=00
+ro.mot.build.product.increment=201
+ro.mot.build.version.release=32.201
+ro.mot.build.version.sdk_int=32
+ro.mot.security.enable=true
+vendor.camera.aux.packagelist=com.motorola.camera2,com.motorola.camera3,com.motorola.motocit
+vendor.camera.aux.packagelist2=com.motorola.ccc,com.android.settings,com.motorola.motointelligence

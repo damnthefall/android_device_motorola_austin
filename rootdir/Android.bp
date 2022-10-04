@@ -1,0 +1,292 @@
+//
+// Copyright (C) 2022 The LineageOS Project
+//
+// SPDX-License-Identifier: Apache-2.0
+//
+
+// Init scripts
+sh_binary {
+    name: "init.mmi.boot.sh",
+    src: "bin/init.mmi.boot.sh",
+    vendor: true,
+}
+
+sh_binary {
+    name: "init.oem.hw.sh",
+    src: "bin/init.oem.hw.sh",
+    vendor: true,
+}
+
+sh_binary {
+    name: "init.mmi.usb.sh",
+    src: "bin/init.mmi.usb.sh",
+    vendor: true,
+}
+
+sh_binary {
+    name: "apanic_mtk.sh",
+    src: "bin/apanic_mtk.sh",
+    vendor: true,
+}
+
+sh_binary {
+    name: "init.mmi.backup.trustlet.sh",
+    src: "bin/init.mmi.backup.trustlet.sh",
+    vendor: true,
+}
+
+sh_binary {
+    name: "init.mmi.block_perm.sh",
+    src: "bin/init.mmi.block_perm.sh",
+    vendor: true,
+}
+
+sh_binary {
+    name: "pstore_annotate.sh",
+    src: "bin/pstore_annotate.sh",
+    vendor: true,
+}
+
+sh_binary {
+    name: "vendor.mmi.cxp.sh",
+    src: "bin/vendor.mmi.cxp.sh",
+    vendor: true,
+}
+
+sh_binary {
+    name: "init.mmi.touch.sh",
+    src: "bin/init.mmi.touch.sh",
+    vendor: true,
+}
+
+sh_binary {
+    name: "hardware_revisions.sh",
+    src: "bin/hardware_revisions.sh",
+    vendor: true,
+}
+
+sh_binary {
+    name: "init.oem.fingerprint2.sh",
+    src: "bin/init.oem.fingerprint2.sh",
+    vendor: true,
+}
+
+sh_binary {
+    name: "init.insmod.sh",
+    src: "bin/init.insmod.sh",
+    vendor: true,
+}
+
+sh_binary {
+    name: "init.mmi.modules.sh",
+    src: "bin/init.mmi.modules.sh",
+    vendor: true,
+}
+
+sh_binary {
+    name: "apanic_annotate.sh",
+    src: "bin/apanic_annotate.sh",
+    vendor: true,
+}
+
+sh_binary {
+    name: "apanic_copy.sh",
+    src: "bin/apanic_copy.sh",
+    vendor: true,
+}
+
+sh_binary {
+    name: "apanic_save.sh",
+    src: "bin/apanic_save.sh",
+    vendor: true,
+}
+
+// Init configuration files
+prebuilt_etc {
+    name: "factory_init.connectivity.rc",
+    src: "etc/factory_init.connectivity.rc",
+    sub_dir: "init/hw",
+    vendor: true,
+}
+
+prebuilt_etc {
+    name: "init.mmi.backup.trustlet.rc",
+    src: "etc/init.mmi.backup.trustlet.rc",
+    sub_dir: "init/hw",
+    vendor: true,
+}
+
+prebuilt_etc {
+    name: "init.project.rc",
+    src: "etc/init.project.rc",
+    sub_dir: "init/hw",
+    vendor: true,
+}
+
+prebuilt_etc {
+    name: "init.mmi.rc",
+    src: "etc/init.mmi.rc",
+    sub_dir: "init/hw",
+    vendor: true,
+}
+
+prebuilt_etc {
+    name: "factory_init.rc",
+    src: "etc/factory_init.rc",
+    sub_dir: "init/hw",
+    vendor: true,
+}
+
+prebuilt_etc {
+    name: "init.mt6833.rc",
+    src: "etc/init.mt6833.rc",
+    sub_dir: "init/hw",
+    vendor: true,
+}
+
+prebuilt_etc {
+    name: "factory_init.connectivity.common.rc",
+    src: "etc/factory_init.connectivity.common.rc",
+    sub_dir: "init/hw",
+    vendor: true,
+}
+
+prebuilt_etc {
+    name: "init.mmi.sec.rc",
+    src: "etc/init.mmi.sec.rc",
+    sub_dir: "init/hw",
+    vendor: true,
+}
+
+prebuilt_etc {
+    name: "init.mt6833.usb.rc",
+    src: "etc/init.mt6833.usb.rc",
+    sub_dir: "init/hw",
+    vendor: true,
+}
+
+prebuilt_etc {
+    name: "factory_init.project.rc",
+    src: "etc/factory_init.project.rc",
+    sub_dir: "init/hw",
+    vendor: true,
+}
+
+prebuilt_etc {
+    name: "multi_init.rc",
+    src: "etc/multi_init.rc",
+    sub_dir: "init/hw",
+    vendor: true,
+}
+
+prebuilt_etc {
+    name: "init.mmi.overlay.rc",
+    src: "etc/init.mmi.overlay.rc",
+    sub_dir: "init/hw",
+    vendor: true,
+}
+
+prebuilt_etc {
+    name: "meta_init.modem.rc",
+    src: "etc/meta_init.modem.rc",
+    sub_dir: "init/hw",
+    vendor: true,
+}
+
+prebuilt_etc {
+    name: "meta_init.rc",
+    src: "etc/meta_init.rc",
+    sub_dir: "init/hw",
+    vendor: true,
+}
+
+prebuilt_etc {
+    name: "init.ago.rc",
+    src: "etc/init.ago.rc",
+    sub_dir: "init/hw",
+    vendor: true,
+}
+
+prebuilt_etc {
+    name: "meta_init.connectivity.rc",
+    src: "etc/meta_init.connectivity.rc",
+    sub_dir: "init/hw",
+    vendor: true,
+}
+
+prebuilt_etc {
+    name: "init_connectivity.rc",
+    src: "etc/init_connectivity.rc",
+    sub_dir: "init/hw",
+    vendor: true,
+}
+
+prebuilt_etc {
+    name: "init.mmi.tcmd.rc",
+    src: "etc/init.mmi.tcmd.rc",
+    sub_dir: "init/hw",
+    vendor: true,
+}
+
+prebuilt_etc {
+    name: "init.connectivity.common.rc",
+    src: "etc/init.connectivity.common.rc",
+    sub_dir: "init/hw",
+    vendor: true,
+}
+
+prebuilt_etc {
+    name: "init.connectivity.rc",
+    src: "etc/init.connectivity.rc",
+    sub_dir: "init/hw",
+    vendor: true,
+}
+
+prebuilt_etc {
+    name: "init.modem.rc",
+    src: "etc/init.modem.rc",
+    sub_dir: "init/hw",
+    vendor: true,
+}
+
+prebuilt_etc {
+    name: "meta_init.project.rc",
+    src: "etc/meta_init.project.rc",
+    sub_dir: "init/hw",
+    vendor: true,
+}
+
+prebuilt_etc {
+    name: "init.aee.rc",
+    src: "etc/init.aee.rc",
+    sub_dir: "init/hw",
+    vendor: true,
+}
+
+prebuilt_etc {
+    name: "meta_init.connectivity.common.rc",
+    src: "etc/meta_init.connectivity.common.rc",
+    sub_dir: "init/hw",
+    vendor: true,
+}
+
+prebuilt_etc {
+    name: "init.mmi.chipset.rc",
+    src: "etc/init.mmi.chipset.rc",
+    sub_dir: "init/hw",
+    vendor: true,
+}
+
+prebuilt_etc {
+    name: "init.sensor_2_0.rc",
+    src: "etc/init.sensor_2_0.rc",
+    sub_dir: "init/hw",
+    vendor: true,
+}
+
+// fstab
+prebuilt_etc {
+    name: "fstab.enableswap",
+    src: "etc/fstab.enableswap",
+    vendor: true,
+}
